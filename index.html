@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Predictor - Liquid Glass</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Liquid Background -->
+    <div class="liquid-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    
+    <div class="glass-panel" id="glass-card">
+        <div class="glass-reflection"></div>
+        <header>
+            <h1 class="gradient-text">Airbnb Predictor</h1>
+            <p>Discover your listing's room type instantly.</p>
+        </header>
+
+        <form id="prediction-form">
+            <div class="input-grid">
+                <div class="input-wrapper">
+                    <input type="number" step="any" id="latitude" name="latitude" required min="-90" max="90" placeholder=" ">
+                    <label for="latitude">Latitude</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="number" step="any" id="longitude" name="longitude" required min="-180" max="180" placeholder=" ">
+                    <label for="longitude">Longitude</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="number" step="any" id="price" name="price" required min="0.01" placeholder=" ">
+                    <label for="price">Price ($)</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="number" id="minimum_nights" name="minimum_nights" required min="1" max="365" placeholder=" ">
+                    <label for="minimum_nights">Minimum Nights</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="number" id="number_of_reviews" name="number_of_reviews" required min="0" placeholder=" ">
+                    <label for="number_of_reviews">Total Reviews</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="number" step="any" id="reviews_per_month" name="reviews_per_month" required min="0" placeholder=" ">
+                    <label for="reviews_per_month">Reviews / Month</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="number" id="calculated_host_listings_count" name="calculated_host_listings_count" required min="0" placeholder=" ">
+                    <label for="calculated_host_listings_count">Host Listings</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="number" id="availability_365" name="availability_365" required min="0" max="365" placeholder=" ">
+                    <label for="availability_365">Availability (Days)</label>
+                </div>
+                <div class="input-wrapper select-wrapper">
+                    <select id="neighbourhood_group" name="neighbourhood_group" required>
+                        <option value="" disabled selected></option>
+                        <option value="Bronx">Bronx</option>
+                        <option value="Brooklyn">Brooklyn</option>
+                        <option value="Manhattan">Manhattan</option>
+                        <option value="Queens">Queens</option>
+                        <option value="Staten Island">Staten Island</option>
+                    </select>
+                    <label for="neighbourhood_group">Borough</label>
+                    <div class="select-arrow"></div>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" id="neighbourhood" name="neighbourhood" required placeholder=" " list="neighList">
+                    <label for="neighbourhood">Neighbourhood</label>
+                    <datalist id="neighList"></datalist>
+                </div>
+            </div>
+
+            <button type="submit" id="submit-btn" class="liquid-button">
+                <span class="btn-text">Predict Now</span>
+                <span class="loader" style="display: none;"></span>
+                <div class="btn-liquid"></div>
+            </button>
+        </form>
+
+        <div id="result-container" class="hidden">
+            <div class="result-glass">
+                <p class="result-subtitle">Predicted Room Type</p>
+                <h2 id="predicted-type" class="gradient-text">Private Room</h2>
+                
+                <div class="probability-container">
+                    <div class="prob-header">
+                        <span class="prob-title">✨ AI Certainty Score</span>
+                        <span id="probability-text" class="prob-badge">85%</span>
+                    </div>
+                    <div class="prob-track">
+                        <div id="probability-fill" class="prob-fill liquid-gradient"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
