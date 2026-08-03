@@ -59,4 +59,4 @@ http://127.0.0.1:8000/
 - `requirements.txt` - Python dependencies.
 - `Model_Pipeline.pkl` - The trained machine learning model.
 - `newyork.jpeg` - The beautiful NYC background image.
-# NYC-Airbnb--Room-Type-Predictor-
+
