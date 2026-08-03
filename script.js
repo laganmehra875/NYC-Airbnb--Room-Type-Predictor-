@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const resultContainer = document.getElementById("result-container");
     const predictedTypeEl = document.getElementById("predicted-type");
+    const probabilityFill = document.getElementById("probability-fill");
     const probabilityText = document.getElementById("probability-text");
 
     const API_URL = "/predict";
