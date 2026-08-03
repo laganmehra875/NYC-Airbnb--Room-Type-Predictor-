@@ -19,6 +19,27 @@ A stunning, interactive web application that leverages a Machine Learning pipeli
 ---
 
 ## 🔄 Application Workflow
+
+Below is the architecture and data workflow for this project:
+
+```mermaid
+graph TD
+    A[Frontend UI: index.html] -->|User Input| B[script.js]
+    B -->|Async POST JSON| C(FastAPI Endpoint: main.py)
+    
+    subgraph Backend
+        C --> D{Pydantic Validation}
+        D -- "Validation Failed" --> E[HTTP 422 Error]
+        D -- "Validated Features" --> F[(Pandas DataFrame)]
+        F --> G((Model_Pipeline.pkl))
+        G --> H[Calculate Prediction & Probability]
+    end
+    
+    H -->|Return JSON| B
+    E -->|Return Error| B
+    B -->|Update DOM| I[Animated Glass Result Card]
+```
+
 1. **User Input**: The user enters listing parameters (e.g., Latitude, Price, Minimum Nights, Borough) into the frontend glass form.
 2. **Data Formatting**: The frontend `script.js` intercepts the form submission, prevents default reloading, parses the inputs into correct data types (integers, floats, strings), and builds a JSON payload.
 3. **API Request**: The frontend sends an asynchronous `POST` request to the FastAPI endpoint (`/predict`).
