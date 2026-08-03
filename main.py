@@ -1,7 +1,5 @@
-from IPython.testing import skipdoctest
 from pydantic import BaseModel, Field
-import pandas as pd 
-from IPython.core import payload
+import pandas as pd
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 import joblib
