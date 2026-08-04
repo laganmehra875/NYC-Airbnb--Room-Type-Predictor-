@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const probabilityFill = document.getElementById("probability-fill");
     const probabilityText = document.getElementById("probability-text");
 
-    const API_URL = "/predict";
+    const API_URL = "https://nyc-airbnb-room-type-predictor-4.onrender.com/predict";
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
